@@ -43,7 +43,8 @@ A production-ready bash script that displays the current date, time, and live we
 
 ```bash
 # Already located at:
-/home/god2/Downloads/cayman-weather.sh
+git clone https://github.com/Lunatic16/cayman-weather.git
+cd cayman-weather
 ```
 
 ### 2. Make It Executable
