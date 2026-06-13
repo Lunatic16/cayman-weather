@@ -1,4 +1,4 @@
-# weather.py — terminal weather CLI
+# weather-enhanced.py — terminal weather CLI
 
 A self-contained Python CLI that prints the **current conditions** and **5-day
 forecast** for any city in the world, with a clean dark-mode-friendly layout.
@@ -29,7 +29,7 @@ coords +35.6895, +139.6917    ·    tz Asia/Tokyo
   ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
   Fri 12-Jun    🌦  Light rain         18.6°C    10.5°C    4.2mm    4.3  03:00 → 23:54       0.8m @ 16:00 · -2.0m @ 22:00
   Sat 13-Jun    ⛅  Partly cloudy      17.0°C     8.9°C    0.0mm    4.6  02:59 → 23:55       0.9m @ 16:00 · -2.4m @ 23:00
-  Sun 14-Jun    ☁️  Overcast         15.8°C     9.5°C    0.0mm    5.5  02:58 → 23:57       1.1m @ 17:00 · -2.4m @ 11:00
+  Sun 14-Jun    ☁️  Overcast           15.8°C     9.5°C    0.0mm    5.5  02:58 → 23:57       1.1m @ 17:00 · -2.4m @ 11:00
   Mon 15-Jun    🌧  Dense drizzle      12.4°C     8.7°C    6.5mm    5.7  02:57 → 23:58       1.4m @ 18:00 · -2.5m @ 00:00
   Tue 16-Jun    🌦  Light drizzle      11.2°C     7.8°C    1.8mm    4.4  02:56 → 23:59       1.5m @ 19:00 · -2.4m @ 01:00
 ```
@@ -81,23 +81,23 @@ coords +35.6895, +139.6917    ·    tz Asia/Tokyo
 
 ```bash
 # Default Celsius
-python3 weather.py "Reykjavik"
+python3 weather-enhanced.py "Reykjavik"
 
 # Fahrenheit
-python3 weather.py --fahrenheit "Miami"
+python3 weather-enhanced.py --fahrenheit "Miami"
 
 # No tide call (faster for inland cities)
-python3 weather.py --no-tides "Phoenix"
+python3 weather-enhanced.py --no-tides "Phoenix"
 
 # Plain, uncolored, pipe-safe output
-python3 weather.py --raw "London" > london.txt
+python3 weather-enhanced.py --raw "London" > london.txt
 ```
 
 If you find yourself using it often, make it executable and add a shebang, then symlink:
 
 ```bash
-chmod +x weather.py
-sudo ln -s "$PWD/weather.py" /usr/local/bin/weather
+chmod +x weather-enhanced.py
+sudo ln -s "$PWD/weather-enhanced.py" /usr/local/bin/weather
 weather "Tokyo"
 ```
 
@@ -106,7 +106,7 @@ weather "Tokyo"
 ## CLI reference
 
 ```
-usage: weather.py [LOCATION] [--celsius | --fahrenheit] [--no-tides] [--raw]
+usage: weather-enhanced.py [LOCATION] [--celsius | --fahrenheit] [--no-tides] [--raw]
 ```
 
 | Flag | Long | Description |
@@ -127,10 +127,10 @@ usage: weather.py [LOCATION] [--celsius | --fahrenheit] [--no-tides] [--raw]
 
 ## Architecture overview
 
-`weather.py` is a single, top-down script (~620 lines). It is deliberately **not** a package:
+`weather-enhanced.py` is a single, top-down script (~620 lines). It is deliberately **not** a package:
 
 ```
-weather.py               ← the script
+weather-enhanced.py               ← the script
 ├── Section: ANSI color palette  (class C, helper c)
 ├── Section: Weather codes        (ICON_MAP, icon(), label())
 ├── Section: Moon phase           (moon_phase_for() — Conway algorithm)
@@ -296,7 +296,7 @@ readable in both dark and light terminals. Force plain output with `--raw`.
 
 ### `ModuleNotFoundError` or other Python errors
 You are likely running Python < 3.11. The script uses PEP 604 union syntax
-(`str | None`). Upgrade or run `python3.11 weather.py`.
+(`str | None`). Upgrade or run `python3.11 weather-enhanced.py`.
 
 ### Color codes appear as garbage (`[1m`, `[94m`, …)
 Your terminal doesn't render ANSI. Run with `--raw` to get plain text, or
