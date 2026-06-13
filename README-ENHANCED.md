@@ -34,7 +34,7 @@ coords +35.6895, +139.6917    ·    tz Asia/Tokyo
   Tue 16-Jun    🌦  Light drizzle      11.2°C     7.8°C    1.8mm    4.4  02:56 → 23:59       1.5m @ 19:00 · -2.4m @ 01:00
 ```
 
-> Single ~600-line Python script. **No API key, no dependencies, no environment variables required.**
+> Single ~470-line Python script. **No API key, no dependencies, no environment variables required.**
 
 ---
 
